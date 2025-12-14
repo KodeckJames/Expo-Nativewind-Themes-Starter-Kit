@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, Pressable, Animated } from 'react-native';
+import { View, Text, Pressable, Animated, Switch } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useColorScheme, useColorSchemeStore } from '../lib/useColorScheme';
 
@@ -8,7 +8,6 @@ export function AnimatedThemeToggle({ className }: { className?: string }) {
   const { setColorScheme } = useColorSchemeStore();
   const isDarkMode = colorScheme === 'dark';
   
-  // Animation values
   const rotateAnim = React.useRef(new Animated.Value(isDarkMode ? 1 : 0)).current;
   const scaleAnim = React.useRef(new Animated.Value(1)).current;
 
@@ -22,7 +21,6 @@ export function AnimatedThemeToggle({ className }: { className?: string }) {
   }, [isDarkMode, rotateAnim]);
 
   const toggleTheme = () => {
-    // Scale animation for press feedback
     Animated.sequence([
       Animated.timing(scaleAnim, {
         toValue: 0.85,
@@ -174,5 +172,38 @@ export function ThemeToggleButton({ size = 24 }: { size?: number }) {
         />
       </Animated.View>
     </Pressable>
+  );
+}
+
+// Switch toggle for light/dark mode
+export function ThemeSwitchToggle() {
+  const colorScheme = useColorScheme();
+  const { setColorScheme } = useColorSchemeStore();
+  const isDarkMode = colorScheme === 'dark';
+
+  const toggleTheme = (value: boolean) => {
+    setColorScheme(value ? 'dark' : 'light');
+  };
+
+  return (
+    <View className="flex-row items-center justify-between p-4 bg-card rounded-xl border border-border shadow-sm">
+      <View className="flex-row items-center gap-3">
+        <Ionicons 
+          name={isDarkMode ? 'moon' : 'sunny'} 
+          size={24} 
+          color={isDarkMode ? '#FDB813' : '#4A5568'}
+        />
+        <Text className="text-base font-medium text-foreground">
+          {isDarkMode ? 'Dark Mode' : 'Light Mode'}
+        </Text>
+      </View>
+      <Switch
+        value={isDarkMode}
+        onValueChange={toggleTheme}
+        trackColor={{ false: '#D1D5DB', true: '#3B82F6' }}
+        thumbColor={isDarkMode ? '#FFFFFF' : '#F3F4F6'}
+        ios_backgroundColor="#D1D5DB"
+      />
+    </View>
   );
 }
