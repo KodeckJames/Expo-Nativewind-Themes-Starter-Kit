@@ -1,25 +1,52 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-import "@/global.css"
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from '@react-navigation/native'
+import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
+import 'react-native-reanimated'
+import '@/global.css'
+import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme as useNativeWindColorScheme } from 'nativewind'
+import { useEffect } from 'react'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import { Colors } from '@/constants/theme'
 
 export const unstable_settings = {
   anchor: '(tabs)',
-};
+}
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme()
+  const { setColorScheme: setNativeWindColorScheme } =
+    useNativeWindColorScheme()
+
+  useEffect(() => {
+    setNativeWindColorScheme(colorScheme)
+  }, [colorScheme, setNativeWindColorScheme])
+
+  const colors = Colors[colorScheme]
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    <SafeAreaProvider>
+      <SafeAreaView className=" flex-1 bg-background">
+        <ThemeProvider
+          value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+        >
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="modal"
+              options={{ presentation: 'modal', title: 'Modal' }}
+            />
+          </Stack>
+          <StatusBar
+            backgroundColor={colors.background}
+            style={colorScheme === 'dark' ? 'light' : 'dark'}
+          />
+        </ThemeProvider>
+      </SafeAreaView>
+    </SafeAreaProvider>
+  )
 }
