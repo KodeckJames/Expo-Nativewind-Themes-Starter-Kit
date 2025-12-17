@@ -1,5 +1,17 @@
 # Welcome to your Expo Themes Starter Kit template with NativeWind (Tailwind CSS) 🎨
 
+<div align="center">
+  <video 
+    src="https://github.com/user-attachments/assets/d5ba3caf-446c-4982-8d9e-a4476ce31987" 
+    width="300" 
+    controls 
+    autoplay 
+    loop 
+    muted 
+    playsinline
+  ></video>
+</div>
+
 > A powerful Expo template to kickstart your Expo projects with pre-configured themes and styling engines, using `Nativewind` (Tailwind CSS for mobile). Skip the boilerplate and start building immediately with a clean, organized architecture, featuring a `Shadcn` and `Tweakcn`-inspired theme system for NativeWind.
 
 This template package is part of the [create-expo-themes](https://www.npmjs.com/package/create-expo-themes) CLI tool
