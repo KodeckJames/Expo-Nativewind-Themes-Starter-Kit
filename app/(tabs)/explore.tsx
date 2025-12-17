@@ -18,7 +18,6 @@ export default function TabTwoScreen() {
           size={310}
           color="#808080"
           name="chevron.left.forwardslash.chevron.right"
-          
         />
       }
     >
@@ -51,6 +50,36 @@ export default function TabTwoScreen() {
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
+      <Collapsible title="Light and dark mode components">
+        <ThemedText>
+          This template has light and dark mode support. The{' '}
+          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook
+          lets you inspect what the user&apos;s current color scheme is, and so
+          you can adjust UI colors accordingly.
+        </ThemedText>
+        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
+          <ThemedText type="link">Learn more</ThemedText>
+        </ExternalLink>
+      </Collapsible>
+      <Collapsible title="Semantic Theming & NativeWind">
+        <ThemedText>
+          Build faster with Shadcn-inspired semantic classes. Instead of
+          manually handling dark modes, use classes like{' '}
+          <ThemedText type="defaultSemiBold">bg-background</ThemedText> or{' '}
+          <ThemedText type="defaultSemiBold">text-primary</ThemedText>.
+        </ThemedText>
+        <ThemedText style={{ marginTop: 10 }}>
+          The custom plugin in{' '}
+          <ThemedText type="defaultSemiBold">tailwind.config.js</ThemedText>{' '}
+          automatically maps these to your Light and Dark palettes. Manual
+          overrides are still possible using the{' '}
+          <ThemedText type="defaultSemiBold">dark:</ThemedText> prefix when
+          needed.
+        </ThemedText>
+        <ExternalLink href="https://github.com/KodeckJames/Expo-Nativewind-Themes-Starter-Kit">
+          <ThemedText type="link">Learn more</ThemedText>
+        </ExternalLink>
+      </Collapsible>
       <Collapsible title="Android, iOS, and web support">
         <ThemedText>
           You can open this project on Android, iOS, and the web. To open the
@@ -73,17 +102,7 @@ export default function TabTwoScreen() {
           <ThemedText type="link">Learn more</ThemedText>
         </ExternalLink>
       </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook
-          lets you inspect what the user&apos;s current color scheme is, and so
-          you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
+
       <Collapsible title="Animations">
         <ThemedText>
           This template includes an example of an animated component. The{' '}
