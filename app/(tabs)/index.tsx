@@ -73,16 +73,16 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView>
       <ThemedView className="gap-2 mb-2">
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText type="subtitle">
+          Step 3: Build with Semantic Colors
+        </ThemedText>
         <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">
-            npm run reset-project
-          </ThemedText>{' '}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{' '}
-          directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+          {`Instead of hardcoding colors, use classes like `}
+          <ThemedText type="defaultSemiBold">bg-card</ThemedText> {'or '}
+          <ThemedText type="defaultSemiBold">text-primary.</ThemedText>{' '}
+          {`They automatically switch between light and dark modes based on your `}
+          <ThemedText type="defaultSemiBold">tailwind.config.js</ThemedText>{' '}
+          settings.{' '}
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
