@@ -1,20 +1,93 @@
-# Welcome to your Expo app 👋
+# Welcome to your Expo Themes Starter Kit template with NativeWind (Tailwind CSS) 🎨
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> A powerful Expo template to kickstart your Expo projects with pre-configured themes and styling engines, using `Nativewind` (Tailwind CSS for mobile). Skip the boilerplate and start building immediately with a clean, organized architecture, featuring a `Shadcn` and `Tweakcn`-inspired theme system for NativeWind.
 
-## Get started
+This template package is part of the [create-expo-themes](https://www.npmjs.com/package/create-expo-themes) CLI tool
 
-1. Install dependencies
+## How to get started with this template
+
+1. Initialize your project:
 
    ```bash
-   npm install
+   npx create-expo-themes@latest
    ```
 
-2. Start the app
+2. Select the second option: `NativeWind (Tailwind CSS)`
+
+3. Start the app:
 
    ```bash
    npx expo start
    ```
+
+## Nativewind implementation.
+
+- Nativewind is implemented in this template as per the steps and guide outlined in the [Official Nativewind documentation](https://www.nativewind.dev/docs/getting-started/installation)
+
+## The sweet part✨- Shadcn and Tweakcn-Inspired Theming
+
+- This template features a unique tailwind.config.js implementation that allows you to use semantic classes (like bg-primary, text-foreground, or border-border) that automatically switch colors when Dark Mode is toggled, which solves one of the biggest pain points in NativeWind: maintaining a consistent semantic color palette across light and dark modes without cluttering your code with `dark:text-xyz` everywhere.
+
+### How it works:
+
+- In your tailwind.config.js file, I've defined a semantic color palette for both light and dark modes. A custom internal plugin handles the heavy lifting, so you don't have to manually write dark: variants for every single component.
+
+### Example usage
+
+```typescript
+// This View will automatically have a light-gray background in Light Mode and a deep-charcoal background in Dark Mode!
+<View className="bg-card p-4 border-border border">
+  <Text className="text-card-foreground font-bold">
+    Dynamic Themed Card
+  </Text>
+</View>
+```
+
+### Customizing your Palette:
+
+- Open tailwind.config.js and modify the colors object. You can change the hex codes for primary, accent, destructive, etc., and the changes will reflect globally across your app immediately.
+
+## Theme implementation logic
+
+The theme management is located in lib/useColorScheme.tsx and follows a modern, persistent state pattern:
+
+- Zustand Store: Acts as the single source of truth for the colorScheme state across the entire app. It handles three states: light, dark, or system.
+
+- Persistent Storage: Using @react-native-async-storage/async-storage, the user's preference is saved locally. This ensures that if a user manually selects "Dark Mode," the app remains in Dark Mode even after being fully closed and reopened.
+
+- Smart Hook (useColorScheme): * On app launch, it triggers loadColorScheme to hydrate the state from storage.
+
+   - If the state is set to system, it automatically falls back to the device's native color preference using React Native's built-in useColorScheme.
+
+   - If a specific preference is stored (light or dark), it overrides the system setting.
+
+## How to use the theme-toggle components in desired pages
+
+- The toggle components are located in `components/ThemeToggle.tsx`
+
+- You have 4 custom toggling components to choose from:
+
+```typescript
+// Simple animated button
+<AnimatedThemeToggle/>
+
+// Full theme selector
+<ThemeToggle/>
+
+// Custom size button
+<ThemeToggleButton size={28}/>
+
+// Custom switch button from react native switch component
+<ThemeSwitchToggle/>
+```
+
+- You then simply import your desired component and use it, for example:
+
+```typescript
+import { AnimatedThemeToggle } from '@/components/ThemeToggle';
+```
+
+## Other core Expo configurations from the original Expo docs:
 
 In the output, you'll find options to open the app in a
 
