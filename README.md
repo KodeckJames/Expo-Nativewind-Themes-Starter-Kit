@@ -26,11 +26,11 @@ This template package is part of the [create-expo-themes](https://www.npmjs.com/
 
 ## The sweet part✨- Shadcn and Tweakcn-Inspired Theming
 
-- This template features a unique tailwind.config.js implementation that allows you to use semantic classes (like bg-primary, text-foreground, or border-border) that automatically switch colors when Dark Mode is toggled, which solves one of the biggest pain points in NativeWind: maintaining a consistent semantic color palette across light and dark modes without cluttering your code with `dark:text-xyz` everywhere.
+- This template features a unique tailwind.config.js implementation that allows you to use semantic classes (like `bg-primary`, `text-foreground`, or `border-border`) that automatically switch colors when Dark Mode is toggled, which solves one of the biggest pain points in NativeWind: maintaining a consistent semantic color palette across light and dark modes without cluttering your code with `dark:text-xyz` everywhere.
 
 ### How it works:
 
-- In your tailwind.config.js file, I've defined a semantic color palette for both light and dark modes. A custom internal plugin handles the heavy lifting, so you don't have to manually write dark: variants for every single component.
+- In your `tailwind.config.js` file, I've defined a semantic color palette for both light and dark modes. A custom internal plugin handles the heavy lifting, so you don't have to manually write `dark:` variants for every single component.
 
 ### Example usage
 
@@ -45,7 +45,7 @@ This template package is part of the [create-expo-themes](https://www.npmjs.com/
 
 ### Customizing your Palette:
 
-- Open tailwind.config.js and modify the colors object. You can change the hex codes for primary, accent, destructive, etc., and the changes will reflect globally across your app immediately.
+- Open `tailwind.config.js` and modify the colors object. You can change the hex codes for `primary`, `accent`, `destructive`, etc., and the changes will reflect globally across your app immediately.
 
 ## Theme implementation logic
 
@@ -97,16 +97,6 @@ In the output, you'll find options to open the app in a
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
 ## Learn more
 
